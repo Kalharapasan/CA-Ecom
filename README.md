@@ -108,7 +108,7 @@ dev_dependencies:
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## 📄 License
+## 📄 [License](./LICENSE.md): Proprietary – Permission Required
 
 This project is created for educational purposes as part of the ICT084 course.
 
