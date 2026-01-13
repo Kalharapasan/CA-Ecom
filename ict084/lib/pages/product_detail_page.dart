@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../data/data.dart';
+import '../widgets/product_card.dart';
 
 class ProductDetailPage extends StatefulWidget {
   final Map<String, dynamic> product;
@@ -36,10 +38,16 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
   ];
 
   List<String> get _productImages => [
-        widget.product['image'],
-        widget.product['image'],
-        widget.product['image'],
+        widget.product['assetImage'] ?? widget.product['image'] ?? '',
+        widget.product['assetImage'] ?? widget.product['image'] ?? '',
+        widget.product['assetImage'] ?? widget.product['image'] ?? '',
       ];
+
+  List<Map<String, dynamic>> get _otherProducts {
+    return products.where((product) => 
+      product['name'] != widget.product['name']
+    ).take(6).toList();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,10 +68,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                       });
                     },
                     itemBuilder: (context, index) {
-                      return Image.network(
-                        _productImages[index],
-                        fit: BoxFit.cover,
-                      );
+                      return _buildProductImage(_productImages[index]);
                     },
                   ),
                   Positioned(
@@ -319,6 +324,61 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                       );
                     },
                   ),
+                  const SizedBox(height: 40),
+                  // Related Products Section
+                  const Text(
+                    'Other Products',
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  GridView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 0.8,
+                      crossAxisSpacing: 16,
+                      mainAxisSpacing: 16,
+                    ),
+                    itemCount: _otherProducts.length,
+                    itemBuilder: (context, index) {
+                      final product = _otherProducts[index];
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ProductDetailPage(
+                                product: product,
+                              ),
+                            ),
+                          );
+                        },
+                        child: ProductCard(
+                          product: product,
+                          onAddToCart: () {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text('Added ${product['name']} to cart'),
+                                duration: const Duration(seconds: 1),
+                              ),
+                            );
+                          },
+                          onAddToWishlist: () {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text('Added ${product['name']} to wishlist'),
+                                duration: const Duration(seconds: 1),
+                              ),
+                            );
+                          },
+                        ),
+                      );
+                    },
+                  ),
                   const SizedBox(height: 100),
                 ],
               ),
@@ -396,6 +456,62 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildProductImage(String imagePath) {
+    if (imagePath.isEmpty) {
+      return _buildPlaceholder();
+    }
+
+    // Check if it's an asset image
+    if (imagePath.startsWith('assets/')) {
+      return Image.asset(
+        imagePath,
+        fit: BoxFit.cover,
+        width: double.infinity,
+        height: double.infinity,
+        errorBuilder: (context, error, stackTrace) {
+          return _buildPlaceholder();
+        },
+      );
+    }
+    
+    // If it's a network image
+    return Image.network(
+      imagePath,
+      fit: BoxFit.cover,
+      width: double.infinity,
+      height: double.infinity,
+      errorBuilder: (context, error, stackTrace) {
+        return _buildPlaceholder();
+      },
+    );
+  }
+
+  Widget _buildPlaceholder() {
+    return Container(
+      width: double.infinity,
+      height: double.infinity,
+      color: Colors.grey.shade200,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            Icons.image_not_supported,
+            size: 80,
+            color: Colors.grey.shade400,
+          ),
+          const SizedBox(height: 12),
+          Text(
+            'No Image',
+            style: TextStyle(
+              color: Colors.grey.shade500,
+              fontSize: 16,
+            ),
+          ),
+        ],
       ),
     );
   }
