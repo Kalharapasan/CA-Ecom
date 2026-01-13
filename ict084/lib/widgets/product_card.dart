@@ -150,9 +150,8 @@ class ProductCard extends StatelessWidget {
 
   Widget _buildProductImage() {
     final assetImage = product['assetImage'];
-    final networkImage = product['networkImage'];
 
-    // Try asset image first, fallback to network image
+    // Use asset image
     if (assetImage != null && assetImage.isNotEmpty) {
       return Image.asset(
         assetImage,
@@ -160,61 +159,14 @@ class ProductCard extends StatelessWidget {
         width: double.infinity,
         height: double.infinity,
         errorBuilder: (context, error, stackTrace) {
-          // If asset fails, try network image
-          if (networkImage != null && networkImage.isNotEmpty) {
-            return Image.network(
-              networkImage,
-              fit: BoxFit.cover,
-              width: double.infinity,
-              height: double.infinity,
-              loadingBuilder: (context, child, loadingProgress) {
-                if (loadingProgress == null) return child;
-                return Center(
-                  child: CircularProgressIndicator(
-                    value: loadingProgress.expectedTotalBytes != null
-                        ? loadingProgress.cumulativeBytesLoaded /
-                            loadingProgress.expectedTotalBytes!
-                        : null,
-                    strokeWidth: 2,
-                  ),
-                );
-              },
-              errorBuilder: (context, error, stackTrace) {
-                return _buildPlaceholder();
-              },
-            );
-          }
+          print('Error loading asset image: $assetImage');
+          print('Error: $error');
           return _buildPlaceholder();
         },
       );
     }
 
-    // If no asset image, use network image directly
-    if (networkImage != null && networkImage.isNotEmpty) {
-      return Image.network(
-        networkImage,
-        fit: BoxFit.cover,
-        width: double.infinity,
-        height: double.infinity,
-        loadingBuilder: (context, child, loadingProgress) {
-          if (loadingProgress == null) return child;
-          return Center(
-            child: CircularProgressIndicator(
-              value: loadingProgress.expectedTotalBytes != null
-                  ? loadingProgress.cumulativeBytesLoaded /
-                      loadingProgress.expectedTotalBytes!
-                  : null,
-              strokeWidth: 2,
-            ),
-          );
-        },
-        errorBuilder: (context, error, stackTrace) {
-          return _buildPlaceholder();
-        },
-      );
-    }
-
-    // No images available
+    // No image available
     return _buildPlaceholder();
   }
 
