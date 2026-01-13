@@ -91,7 +91,7 @@ class OrderHistoryPage extends StatelessWidget {
                             vertical: 6,
                           ),
                           decoration: BoxDecoration(
-                            color: (order['statusColor'] as Color).withOpacity(0.1),
+                            color: (order['statusColor'] as Color).withValues(alpha: 0.1),
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: Text(

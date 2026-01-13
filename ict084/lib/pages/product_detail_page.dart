@@ -81,7 +81,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                           decoration: BoxDecoration(
                             color: _selectedImageIndex == index
                                 ? Colors.white
-                                : Colors.white.withOpacity(0.4),
+                                : Colors.white.withValues(alpha: 0.4),
                             shape: BoxShape.circle,
                           ),
                         ),
