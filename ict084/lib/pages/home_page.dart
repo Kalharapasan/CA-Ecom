@@ -7,6 +7,7 @@ import 'search_page.dart';
 import 'product_detail_page.dart';
 import '../widgets/product_card.dart';
 import '../widgets/category_list.dart';
+import '../data/data.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -26,94 +27,6 @@ class _HomePageState extends State<HomePage> {
     'Home',
     'Sports',
     'Books',
-  ];
-
-
-  final List<Map<String, dynamic>> products = [
-    {
-      'name': 'Laptop',
-      'price': '\$999',
-      'category': 'Electronics',
-      'assetImage': 'assets/images/products/laptop.jpg',
-      'networkImage': 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400',
-    },
-    {
-      'name': 'Smartphone',
-      'price': '\$699',
-      'category': 'Electronics',
-      'assetImage': 'assets/images/products/smartphone.jpg',
-      'networkImage': 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400',
-    },
-    {
-      'name': 'Headphones',
-      'price': '\$199',
-      'category': 'Electronics',
-      'assetImage': 'assets/images/products/headphones.jpg',
-      'networkImage': 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400',
-    },
-    {
-      'name': 'Smart Watch',
-      'price': '\$299',
-      'category': 'Fashion',
-      'assetImage': 'assets/images/products/smartwatch.jpg',
-      'networkImage': 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400',
-    },
-    {
-      'name': 'Camera',
-      'price': '\$799',
-      'category': 'Electronics',
-      'assetImage': 'assets/images/products/camera.jpg',
-      'networkImage': 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400',
-    },
-    {
-      'name': 'Sofa',
-      'price': '\$499',
-      'category': 'Home',
-      'assetImage': 'assets/images/products/sofa.jpg',
-      'networkImage': 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400',
-    },
-    {
-      'name': 'Running Shoes',
-      'price': '\$129',
-      'category': 'Fashion',
-      'assetImage': 'assets/images/products/shoes.jpg',
-      'networkImage': 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400',
-    },
-    {
-      'name': 'Basketball',
-      'price': '\$50',
-      'category': 'Sports',
-      'assetImage': 'assets/images/products/basketball.jpg',
-      'networkImage': 'https://images.unsplash.com/photo-1546519638-68e109498ffc?w=400',
-    },
-    {
-      'name': 'Coffee Maker',
-      'price': '\$89',
-      'category': 'Home',
-      'assetImage': 'assets/images/products/coffee_maker.jpg',
-      'networkImage': 'https://images.unsplash.com/photo-1517668808822-9ebb02f2a0e6?w=400',
-    },
-    {
-      'name': 'Book: Flutter',
-      'price': '\$30',
-      'category': 'Books',
-      'assetImage': 'assets/images/products/book_flutter.jpg',
-      'networkImage': 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=400',
-    },
-    {
-      'name': 'Yoga Mat',
-      'price': '\$35',
-      'category': 'Sports',
-      'assetImage': 'assets/images/products/yoga_mat.jpg',
-      'networkImage': 'https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?w=400',
-    },
-    {
-      'name': 'Backpack',
-      'price': '\$79',
-      'category': 'Fashion',
-      'assetImage': 'assets/images/products/backpack.jpg',
-      'networkImage': 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400',
-    },
   ];
 
   final List<Map<String, dynamic>> cartProducts = [];
