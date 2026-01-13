@@ -140,7 +140,7 @@ class _SearchPageState extends State<SearchPage> {
                   ),
                   const SizedBox(height: 10),
                   DropdownButtonFormField<String>(
-                    value: _sortBy,
+                    initialValue: _sortBy,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                     ),

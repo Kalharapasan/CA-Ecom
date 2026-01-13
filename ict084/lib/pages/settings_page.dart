@@ -320,13 +320,21 @@ class _SettingsPageState extends State<SettingsPage> {
               'Chinese',
               'Japanese'
             ].map((lang) {
-              return RadioListTile<String>(
+              return ListTile(
+                leading: Radio<String>(
+                  value: lang,
+                  groupValue: _language,
+                  onChanged: (value) {
+                    setState(() {
+                      _language = value!;
+                    });
+                    Navigator.pop(context);
+                  },
+                ),
                 title: Text(lang),
-                value: lang,
-                groupValue: _language,
-                onChanged: (value) {
+                onTap: () {
                   setState(() {
-                    _language = value!;
+                    _language = lang;
                   });
                   Navigator.pop(context);
                 },
