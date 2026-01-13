@@ -18,11 +18,11 @@ class ProfilePage extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             const Text(
-              'John Doe',
+              'Pasan Kalhara',
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
-            const Text('john.doe@example.com'),
+            const Text('kalharap84@gmail.com'),
             const SizedBox(height: 20),
             ElevatedButton.icon(
               icon: const Icon(Icons.logout),
