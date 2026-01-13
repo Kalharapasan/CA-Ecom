@@ -41,40 +41,48 @@ ShopHub is a modern, feature-rich e-commerce mobile application built with Flutt
 ## 📁 Project Structure
 
 ```
-lib/
-├── main.dart                       # App entry point
-├── pages/                          # All app screens
-│   ├── splash_screen.dart          # Animated splash screen
-│   ├── onboarding_screen.dart      # Welcome screens
-│   ├── home_page.dart              # Main home screen
-│   ├── product_detail_page.dart    # Product details
-│   ├── search_page.dart            # Search with filters
-│   ├── cart_page.dart              # Shopping cart
-│   ├── wishlist_page.dart          # Saved items
-│   ├── categories_page.dart        # Category browser
-│   ├── profile_page.dart           # User profile
-│   ├── order_history_page.dart     # Past orders
-│   └── settings_page.dart          # App settings
-└── widgets/                        # Reusable components
-    ├── product_card.dart           # Product display card
-    └── category_list.dart          # Category selector
+ict084/
+├── lib/
+│   ├── main.dart                   # App entry point
+│   ├── data/
+│   │   └── data.dart               # Mock data and models
+│   ├── pages/                      # All app screens
+│   │   ├── splash_screen.dart      # Animated splash screen
+│   │   ├── onboarding_screen.dart  # Welcome screens
+│   │   ├── home_page.dart          # Main home screen
+│   │   ├── product_detail_page.dart# Product details
+│   │   ├── search_page.dart        # Search with filters
+│   │   ├── cart_page.dart          # Shopping cart
+│   │   ├── wishlist_page.dart      # Saved items
+│   │   ├── categories_page.dart    # Category browser
+│   │   ├── profile_page.dart       # User profile
+│   │   ├── order_history_page.dart # Past orders
+│   │   └── settings_page.dart      # App settings
+│   └── widgets/                    # Reusable components
+│       ├── product_card.dart       # Product display card
+│       └── category_list.dart      # Category selector
+├── android/                        # Android platform files
+├── ios/                            # iOS platform files
+├── assets/
+│   └── images/                     # App images and icons
+└── pubspec.yaml                    # Dependencies and metadata
 ```
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Flutter SDK (3.0 or higher)
-- Dart SDK (3.0 or higher)
-- Android Studio / VS Code
+- Flutter SDK (3.24 or higher)
+- Dart SDK (3.5 or higher)
+- Android Studio / VS Code with Flutter extensions
 - Android device or emulator / iOS simulator
 
 ### Installation
 
 1. **Clone or download this project**
 
-2. **Navigate to project directory**
+2. **Navigate to the Flutter project directory**
    ```bash
-   cd shophub
+   cd CA-Ecom/ict084
    ```
 
 3. **Install dependencies**
@@ -114,21 +122,21 @@ theme: ThemeData(
 ```
 
 ### Products
-Modify the products list in `pages/home_page.dart`:
+Modify the products list in `lib/data/data.dart` or `lib/pages/home_page.dart`:
 ```dart
 final List<Map<String, dynamic>> products = [
   {
     'name': 'Product Name',
     'price': '\$999',
     'category': 'Category',
-    'image': 'https://...',
+    'image': 'assets/images/products/...',
   },
   // Add more products
 ];
 ```
 
 ### Categories
-Update categories in `pages/home_page.dart`:
+Update categories in `lib/pages/home_page.dart`:
 ```dart
 final List<String> categories = [
   'All',
@@ -220,17 +228,20 @@ This project demonstrates:
 ## 🚧 Future Enhancements
 
 - [ ] User authentication (login/signup)
-- [ ] Backend integration (API)
-- [ ] Payment gateway integration
+- [ ] Backend integration (REST API/GraphQL)
+- [ ] Payment gateway integration (Stripe, PayPal)
 - [ ] Real-time order tracking
-- [ ] Push notifications
+- [ ] Push notifications (Firebase Cloud Messaging)
 - [ ] Dark mode implementation
-- [ ] Multi-language support
+- [ ] Multi-language support (i18n)
 - [ ] Product ratings and reviews submission
 - [ ] Social media sharing
 - [ ] Delivery address management
 - [ ] Coupon/promo code system
-- [ ] Chat support
+- [ ] AI-powered recommendations
+- [ ] Voice search functionality
+- [ ] Augmented Reality product preview
+- [ ] Chat support (real-time messaging)
 
 ## 📝 Notes for University CA
 
@@ -268,6 +279,6 @@ This project is created for educational purposes as part of a university coursew
 ---
 
 **Version:** 1.0.0  
-**Last Updated:** January 2025  
-**Flutter Version:** 3.0+  
+**Last Updated:** January 2026  
+**Flutter Version:** 3.24+  
 **Platform:** Android & iOS
