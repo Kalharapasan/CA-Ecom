@@ -28,8 +28,7 @@ class _HomePageState extends State<HomePage> {
     'Books',
   ];
 
-  // Products with BOTH asset and network images
-  // The app will try asset image first, then fallback to network image
+
   final List<Map<String, dynamic>> products = [
     {
       'name': 'Laptop',
@@ -419,7 +418,7 @@ class _HomePageState extends State<HomePage> {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.blue.withOpacity(0.3),
+            color: Colors.blue.withValues(alpha: 0.3),
             blurRadius: 15,
             offset: const Offset(0, 8),
           ),
@@ -434,7 +433,7 @@ class _HomePageState extends State<HomePage> {
               width: 150,
               height: 150,
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.1),
+                color: Colors.white.withValues(alpha: 0.1),
                 shape: BoxShape.circle,
               ),
             ),
@@ -596,9 +595,9 @@ class _HomePageState extends State<HomePage> {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
+        color: color.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: color.withOpacity(0.3)),
+        border: Border.all(color: color.withValues(alpha: 0.3)),
       ),
       child: Row(
         children: [
